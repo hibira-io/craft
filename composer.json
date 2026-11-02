@@ -1,0 +1,34 @@
+{
+  "name": "hibira-io/craft-hibira",
+  "description": "Realtime for Craft CMS on Hibira: editing presence and saved warnings in the control panel, live entry updates on the front end, Commerce order status, and Twig/PHP event publishing.",
+  "type": "craft-plugin",
+  "license": "MIT",
+  "keywords": ["craftcms", "craft-plugin", "realtime", "websockets", "pusher", "presence", "hibira"],
+  "homepage": "https://hibira.io/guides/craft",
+  "support": {
+    "issues": "https://github.com/hibira-io/craft/issues",
+    "source": "https://github.com/hibira-io/craft",
+    "docs": "https://hibira.io/guides/craft"
+  },
+  "authors": [{ "name": "Hibira", "homepage": "https://hibira.io" }],
+  "require": {
+    "php": ">=8.2",
+    "craftcms/cms": "^5.0",
+    "pusher/pusher-php-server": "^7.2"
+  },
+  "autoload": {
+    "psr-4": { "hibira\\craft\\": "src/" }
+  },
+  "extra": {
+    "handle": "hibira",
+    "name": "Hibira Realtime",
+    "developer": "Hibira",
+    "developerUrl": "https://hibira.io",
+    "documentationUrl": "https://hibira.io/guides/craft",
+    "class": "hibira\\craft\\Plugin"
+  },
+  "config": {
+    "allow-plugins": { "craftcms/plugin-installer": true, "yiisoft/yii2-composer": true },
+    "platform": { "php": "8.2" }
+  }
+}
