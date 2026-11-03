@@ -1,0 +1,78 @@
+{% import '_includes/forms.twig' as forms %}
+
+<p>
+  {{ 'Copy the App ID, Key and Secret from your app page at {link}. Environment variables such as {var} keep the secret out of project config.'|t('hibira', {
+    link: '<a href="https://hibira.io/portal" target="_blank" rel="noopener">hibira.io</a>',
+    var: '<code>$HIBIRA_APP_SECRET</code>',
+  })|raw }}
+</p>
+
+{% if not configured %}
+  <p class="warning has-icon">
+    <span class="icon" aria-hidden="true"></span>
+    <span class="visually-hidden">{{ 'Warning'|t('app') }}: </span>
+    {{ 'Hibira is not connected yet: set the App ID, Key and Secret.'|t('hibira') }}
+  </p>
+{% endif %}
+
+{{ forms.autosuggestField({
+  label: 'App ID'|t('hibira'),
+  id: 'appId',
+  name: 'appId',
+  value: settings.appId,
+  suggestEnvVars: true,
+  errors: settings.getErrors('appId'),
+}) }}
+
+{{ forms.autosuggestField({
+  label: 'Key'|t('hibira'),
+  id: 'key',
+  name: 'key',
+  value: settings.key,
+  suggestEnvVars: true,
+  errors: settings.getErrors('key'),
+}) }}
+
+{{ forms.autosuggestField({
+  label: 'Secret'|t('hibira'),
+  instructions: 'Use an environment variable so the secret is not stored in project config.'|t('hibira'),
+  id: 'secret',
+  name: 'secret',
+  value: settings.secret,
+  suggestEnvVars: true,
+  errors: settings.getErrors('secret'),
+}) }}
+
+{{ forms.autosuggestField({
+  label: 'Host'|t('hibira'),
+  instructions: 'ws.hibira.io unless your app lives in another cluster.'|t('hibira'),
+  id: 'host',
+  name: 'host',
+  value: settings.host,
+  suggestEnvVars: true,
+  errors: settings.getErrors('host'),
+}) }}
+
+{{ forms.lightswitchField({
+  label: 'Editing presence'|t('hibira'),
+  instructions: 'Show who else has an entry open, and warn when someone else saves it.'|t('hibira'),
+  id: 'cpPresence',
+  name: 'cpPresence',
+  on: settings.cpPresence,
+}) }}
+
+{{ forms.lightswitchField({
+  label: 'Live entries'|t('hibira'),
+  instructions: 'Publish entry-updated on craft-entry-ID and entry-saved on craft-section-HANDLE when a live entry is saved.'|t('hibira'),
+  id: 'liveEntries',
+  name: 'liveEntries',
+  on: settings.liveEntries,
+}) }}
+
+{{ forms.lightswitchField({
+  label: 'Commerce orders'|t('hibira'),
+  instructions: 'Publish order status changes on private-craft-order-NUMBER, and show new orders in the control panel.'|t('hibira'),
+  id: 'commerceOrders',
+  name: 'commerceOrders',
+  on: settings.commerceOrders,
+}) }}

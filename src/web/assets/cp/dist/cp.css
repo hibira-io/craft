@@ -1,0 +1,7 @@
+.hibira-presence { display: none; margin-bottom: 14px; padding: 10px 12px; border-radius: 6px; background: var(--light-highlight-color, #f3f7fc); font-size: 13px; }
+.hibira-presence.hibira-active { display: block; }
+.hibira-others { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.hibira-label { color: var(--light-text-color, #606d7b); margin-right: 2px; }
+.hibira-chip { display: inline-flex; gap: 6px; align-items: center; padding: 2px 8px 2px 2px; border-radius: 999px; background: var(--white, #fff); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08); }
+.hibira-chip img { width: 20px; height: 20px; border-radius: 50%; }
+.hibira-saved:not(:empty) { display: flex; gap: 8px; align-items: center; justify-content: space-between; margin-top: 8px; color: var(--error-color, #cf1124); }
